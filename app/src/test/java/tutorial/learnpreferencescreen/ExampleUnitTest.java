@@ -1,4 +1,4 @@
-package tutorial.learnadm;
+package tutorial.learnpreferencescreen;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package tutorial.learnadm;
+package tutorial.learnpreferencescreen;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
