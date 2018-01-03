@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:amazon="http://schemas.amazon.com/apk/res/android"
+    package="tutorial.learnadm">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".AmazonDeviceMessaging">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- You must explicitly enable ADM and declare whether your app cannot work without
+         ADM (android:required="true") or can work without ADM (android:required="false").
+         If you specify android:required="false", your app must degrade gracefully if ADM
+         is unavailable. -->
+        <amazon:enable-feature
+            android:name="com.amazon.device.messaging"
+            android:required="true"/>
+
+        <service android:name="com.ap.philly.admMessaging.ADMMessageHandler"
+            android:exported="false"/>
+
+    </application>
+
+    <permission
+        android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="[YOUR PACKAGE NAME].permission.RECEIVE_ADM_MESSAGE" />
+
+    <!-- This permission allows your app access to receive push notifications
+    from ADM. -->
+    <uses-permission android:name="com.amazon.device.messaging.permission.RECEIVE" />
+
+    <!-- ADM uses WAKE_LOCK to keep the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+
+</manifest>
